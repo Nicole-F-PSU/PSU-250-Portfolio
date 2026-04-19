@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5 Lab 5</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Text formatting -->
+    <h3>1. resetScreen</h3>
+    <button onclick="resetScreen()">Reset travel options</button>
+    <p id="travelMessage"></p>
+    <select id="travelList">
+        <option value="">Select destination</option>
+    </select>
+
+    <h3>2. revealGender</h3>
+    <button onclick="revealGender()">Reveal gender</button>
+    <div id="genderContainer" class="container">
+        <p id="genderMessage"></p>
+    </div>
+
+    <h3>3. showColor</h3>
+    <input type="text" id="colorInput" placeholder="Enter a color (e.g., red, #FF0000)">
+    <button onclick="showColor()">Show color</button>
+    <div id="colorDiv" class="container">
+        <p id="colorMessage"></p>
+    </div>
+
+    <h3>4. renderCountries</h3>
+    <select id="continent">
+        <option value="europe">Europe</option>
+        <option value="asia">Asia</option>
+        <option value="africa">Africa</option>
+    </select>
+    <button onclick="renderCountries()">Update countries</button>
+    <p>Countries:</p>
+    <select id="country">
+        <option value="">Select country</option>
+    </select>
+
+    <!-- Scripts -->
+    <script>
+
+        /*Task 1:
+        function called from html button
+        prints text to paragraph element
+        fills list with 3 new options
+        */
+        function resetScreen() {
+            document.getElementById('travelMessage').textContent = 'Where do you want to travel?';
+
+            const travelList = document.getElementById('travelList');
+            travelList.innerHTML = '';
+
+            const countries = ['France', 'Italy', 'Spain'];
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.toLowerCase();
+                option.textContent = country;
+                travelList.appendChild(option);
+            });
+        }
+
+        /*Task 2:
+        function called from html button
+        randomly displays a labelin paragraph element
+        labels update with distinct styling
+        */
+        function revealGender() {
+            const isBoy = Math.random() < 0.5;
+            const genderMessage = document.getElementById('genderMessage');
+            const genderContainer = document.getElementById('genderContainer');
+
+            if (isBoy) {
+                genderMessage.textContent = "It's a boy";
+                genderContainer.style.backgroundColor = '#ADD8E6';
+                genderContainer.style.color = '#00008B';
+                genderContainer.style.fontWeight = 'bold';
+            } else {
+                genderMessage.textContent = "It's a girl";
+                genderContainer.style.backgroundColor = '#FFB6C1';
+                genderContainer.style.color = '#8B0000';
+                genderContainer.style.fontStyle = 'italic';
+            }
+        }
+
+        /*Task 3:
+        function called from html button
+        color value determined from textbox input
+        sets the background-color of the container to the value of the inputted color
+        */
+        function showColor() {
+            const color = document.getElementById('colorInput').value.trim().toLowerCase();
+            const colorDiv = document.getElementById('colorDiv');
+            const colorMessage = document.getElementById('colorMessage');
+
+            if (color) {
+                colorMessage.textContent = color;
+                colorDiv.style.backgroundColor = color;
+            } else {
+                colorMessage.textContent = 'Please enter a color';
+                colorDiv.style.backgroundColor = 'transparent';
+            }
+        }
+        /*Task 4:
+        function called from html button
+        selection list option determines output
+        fills a list with 3 new options based on the other list's current selection
+        */
+        function renderCountries() {
+            const continent = document.getElementById('continent').value;
+            const countrySelect = document.getElementById('country');
+
+            countrySelect.innerHTML = '<option value="">Select country</option>';
+
+            let countries = [];
+
+            switch (continent) {
+                case 'europe':
+                    countries = ['France', 'Italy', 'Spain'];
+                    break;
+                case 'asia':
+                    countries = ['Thailand', 'Cambodia', 'Vietnam'];
+                    break;
+                case 'africa':
+                    countries = ['Congo', 'Zimbabwe', 'South Africa'];
+                    break;
+            }
+
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.toLowerCase().replace(' ', '');
+                option.textContent = country;
+                countrySelect.appendChild(option);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

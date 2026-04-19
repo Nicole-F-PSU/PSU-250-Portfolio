@@ -1,0 +1,189 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson 5 Lab 4</title>
+</head>
+
+<body>
+    <!-- Text formatting including buttons for each function -->
+
+    <h3>1. rentComparison</h3>
+    <button onclick="rentComparison()">Compare rent</button>
+    <p id="output1"></p>
+
+    <h3>2. rentComparison2</h3>
+    <button onclick="rentComparison2(7500)">Compare with $7500</button>
+    <p id="output2"></p>
+
+    <h3>3. rentComparison3</h3>
+    <input type="number" id="monthlyRent" placeholder="Monthly rent">
+    <button onclick="rentComparison3(7500)">Compare</button>
+    <p id="output3"></p>
+
+    <h3>4. sumOfNumbers</h3>
+    <button onclick="sumOfNumbers()">Start adding</button>
+    <p id="output4"></p>
+
+    <h3>5. sumOfNumbers2</h3>
+    <input type="number" id="stopValue" placeholder="Stop value" value="0">
+    <button onclick="sumOfNumbers2()">Start adding</button>
+    <p id="output5"></p>
+
+    <h3>6. calculateEvenOdd</h3>
+    <button onclick="calculateEvenOdd()">Calculate</button>
+    <p id="output6a"></p>
+    <p id="output6b"></p>
+
+    <!-- Scripts -->
+
+    <script>
+        /*Task 1:
+        function called from html button
+        accepts user input from prompt for outside rent
+        determines cheaper option
+        */
+        function rentComparison() {
+            const monthlyRent = parseFloat(prompt('Enter monthly rent:'));
+            const universityYearly = 7500;
+            const outsideYearly = monthlyRent * 12;
+
+            let result;
+            if (outsideYearly < universityYearly) {
+                result = `Outside is cheaper: $${outsideYearly.toFixed(2)} vs university $${universityYearly}`;
+            } else if (universityYearly < outsideYearly) {
+                result = `University is cheaper: $${universityYearly} vs outside $${outsideYearly.toFixed(2)}`;
+            } else {
+                result = `Both cost the same: $${universityYearly}`;
+            }
+            document.getElementById('output1').textContent = result;
+        }
+        /*Task 2:
+        function called from html button
+        accepts user input from prompt for university rent
+        determines cheaper option
+        */
+        function rentComparison2(universityYearly) {
+            const monthlyRent = parseFloat(prompt('Enter monthly rent:'));
+            const outsideYearly = monthlyRent * 12;
+
+            let result;
+            if (outsideYearly < universityYearly) {
+                result = `Outside is cheaper: $${outsideYearly.toFixed(2)} vs university $${universityYearly}`;
+            } else if (universityYearly < outsideYearly) {
+                result = `University is cheaper: $${universityYearly} vs outside $${outsideYearly.toFixed(2)}`;
+            } else {
+                result = `Both cost the same: $${universityYearly}`;
+            }
+            document.getElementById('output2').textContent = result;
+        }
+
+        /*Task 3:
+        function called from html button
+        accepts user input from prompt for university rent
+        accepts user input from textbox for outside rent
+        output displayed as a paragraph
+        determines cheaper option
+        */
+        function rentComparison3(universityYearly) {
+            const monthlyRent = parseFloat(prompt('Enter monthly rent:'));
+            if (isNaN(monthlyRent)) {
+                document.getElementById('output3').textContent = 'Please enter a valid monthly rent';
+                return;
+            }
+
+            const outsideYearly = monthlyRent * 12;
+
+            let result;
+            if (outsideYearly < universityYearly) {
+                result = `Outside is cheaper: $${outsideYearly.toFixed(2)} vs university $${universityYearly}`;
+            } else if (universityYearly < outsideYearly) {
+                result = `University is cheaper: $${universityYearly} vs outside $${outsideYearly.toFixed(2)}`;
+            } else {
+                result = `Both cost the same: $${universityYearly}`;
+            }
+            document.getElementById('output3').textContent = result;
+        }
+
+        /*Task 4:
+        function called from html button
+        continually accepts user input from prompt for numbers
+        enter 0 to end function
+        logs the sum of all numbers entered
+        */
+        function sumOfNumbers() {
+            let sum = 0;
+            let num;
+
+            while (true) {
+                num = parseFloat(prompt(`Current sum: ${sum}\nEnter a number (0 to stop):`));
+                if (isNaN(num)) {
+                    alert('Please enter a valid number');
+                    continue;
+                }
+                if (num === 0) break;
+                sum += num;
+            }
+
+            document.getElementById('output4').textContent = `Final sum: ${sum}`;
+        }
+
+        /*Task 5:
+        function called from html button
+        continually accepts user input from prompt for numbers
+        user input from textbox determines value that ends loop
+        enter user inputted parameter number to end loop
+        Displays sum of all numbers inputted in a paragraph
+        */
+        function sumOfNumbers2() {
+            const stopValue = parseFloat(document.getElementById('stopValue').value);
+            if (isNaN(stopValue)) {
+                document.getElementById('output5').textContent = 'Please enter a valid stop value';
+                return;
+            }
+
+            let sum = 0;
+            let num;
+
+            while (true) {
+                num = parseFloat(prompt(`Current sum: ${sum}\nEnter a number (${stopValue} to stop):`));
+                if (isNaN(num)) {
+                    alert('Please enter a valid number');
+                    continue;
+                }
+                if (num === stopValue) break;
+                sum += num;
+            }
+
+            document.getElementById('output5').textContent = `Final sum: ${sum}`;
+        }
+
+        /*Bonus Task:
+        function called from html button
+        Calculates the sum of all even numbers between 1 and 100
+        Calculates the product of all odd numbers between 1 and 100
+        Displays the sum and product in seperate paragraphs
+        */
+        function calculateEvenOdd() {
+            let sumEven = 0;
+            let productOdd = 1;
+            let oddCount = 0;
+
+            for (let i = 1; i <= 100; i++) {
+                if (i % 2 === 0) {
+                    sumEven += i;
+                } else {
+                    productOdd *= i;
+                    oddCount++;
+                }
+            }
+
+            document.getElementById('output6a').textContent = `Sum of all even numbers between 1 and 100: ${sumEven}`;
+            document.getElementById('output6b').textContent = `Product of all odd numbers between 1 and 100: ${productOdd.toExponential(4)} (${oddCount} odd numbers)`;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        background: #f1f5f9;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+    }
+
+    /* Main Grid Container - 4 areas */
+
+    #portfolio-grid {
+        max-width: 1280px;
+        width: 100%;
+        background: white;
+        border-radius: 32px;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: grid;
+        grid-template-areas:
+            "header header"
+            "aside main"
+            "aside footer";
+        grid-template-columns: 260px 1fr;
+        grid-template-rows: auto 1fr auto;
+        min-height: 85vh;
+        transition: all 0.2s ease;
+    }
+
+
+    header {
+        grid-area: header;
+        background-color: #b9e0ff;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 1px solid #9ac2db;
+    }
+
+    header h1 {
+        font-size: 1.9rem;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        color: #0c4e6e;
+    }
+
+    /* Aside Area - Menu with links */
+
+    aside {
+        grid-area: aside;
+        background: #fef9e8;
+        padding: 2rem 1.5rem;
+        border-right: 1px solid #e2e8f0;
+    }
+
+    aside h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        color: #2d3e50;
+        border-left: 4px solid #3b82f6;
+        padding-left: 12px;
+    }
+
+    #project-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        list-style: none;
+    }
+
+    #project-links a {
+        display: block;
+        background: white;
+        padding: 12px 18px;
+        border-radius: 60px;
+        text-decoration: none;
+        font-weight: 500;
+        color: #1e293b;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e9e5d8;
+    }
+
+    #project-links a:hover {
+        background: #d9efff;
+        transform: translateX(6px);
+        border-color: #3b82f6;
+        color: #0f172a;
+    }
+
+    /* Main Area - Screenshots with description */
+
+    main {
+        grid-area: main;
+        padding: 2rem 2rem 2rem 2rem;
+        background: white;
+    }
+
+    #project-showcase {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .project-card {
+        flex: 1;
+        min-width: 240px;
+        background: #fafcff;
+        border-radius: 28px;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s;
+        border: 1px solid #eef2ff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .screenshot {
+        background: linear-gradient(145deg, #e6f0fa, #cddcec);
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-bottom: 2px solid #cbdde9;
+    }
+
+    .screenshot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .project-card p {
+        padding: 1.2rem 1rem 1.5rem;
+        text-align: center;
+        font-size: 1rem;
+        color: #334155;
+        font-weight: 500;
+        background: white;
+        margin: 0;
+        border-top: 1px solid #ecf3fa;
+    }
+
+    /* Footer Area - with contact info */
+
+    footer {
+        grid-area: footer;
+        background-color: #b9e0ff;
+        padding: 1.2rem 2rem;
+        text-align: center;
+        font-size: 1rem;
+        color: #0b3b4f;
+        border-top: 1px solid #9ac2db;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    footer span {
+        color: #035c7c;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    /* Tablet to Mobile breakpoints */
+
+    @media screen and (max-width: 850px) {
+
+        body {
+            padding: 12px;
+        }
+
+        #portfolio-grid {
+            grid-template-areas:
+                "header"
+                "aside"
+                "main"
+                "footer";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            min-height: 90vh;
+            border-radius: 28px;
+        }
+
+        header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        aside {
+            border-right: none;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        aside h2 {
+            margin: 0 20% 0;
+            padding: 12px 0;
+            border-left: none;
+            border-top: 4px solid #3b82f6;
+
+        }
+
+        #project-links {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #project-links li a {
+            padding: 8px 20px;
+        }
+
+        #project-showcase {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+        }
+
+        footer {
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+
+    }

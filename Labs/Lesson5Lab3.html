@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5 Lab 3</title>
+</head>
+
+<body>
+    <pre id="output"
+        style="font-family: monospace; background: #f5f5f5; padding: 1rem; border-radius: 4px; white-space: pre-wrap;"></pre>
+    <script>
+        /* Function to display answers to page */
+        (function () {
+            const outLines = [];
+
+            function logToPage(...args) {
+                const line = args.join(' ');
+                outLines.push(line);
+                console.log(line);
+            }
+            /* Task 1:        */
+            let sumEven = 0;
+            let productOdd = 1;
+            let oddCount = 0;
+
+            /* For loop to calculate answers*/
+            for (let i = 1; i <= 100; i++) {
+                if (i % 2 === 0) {
+                    sumEven += i;
+                } else {
+                    productOdd *= i;
+                    oddCount++;
+                }
+            }
+            /* Log answers of task 1 */
+            logToPage('1. Sums:');
+            logToPage(`  Sum of all even numbers between 1 and 100: ${sumEven}`);
+            logToPage(`  Product of all odd numbers between 1 and 100: ${productOdd.toExponential(4)} (${oddCount} odd numbers)`);
+
+
+            /*Task 2:*/
+
+            let sumNumbers = 0;
+            let userInput;
+
+            /* While loop to capture numbers and add. Press 0 to end loop*/
+            logToPage('\n2. Summed value:');
+            while (true) {
+                userInput = prompt('Enter a number (0 to stop):');
+                const num = parseFloat(userInput);
+
+                if (isNaN(num)) {
+                    logToPage('   Invalid input, please enter a number');
+                    continue;
+                }
+
+                if (num === 0) {
+                    break;
+                }
+
+                sumNumbers += num;
+                logToPage(`   Added ${num}, current sum: ${sumNumbers}`);
+            }
+            /*Log answers of task 2*/
+            logToPage(`   Final sum of all numbers entered: ${sumNumbers}`);
+
+            /*Task 3:*/
+
+            logToPage('\n3. Digits 0-9 with arrows for multiples of 3:');
+            let digit = 0;
+
+            /* while loop to find multiples of 3 */
+            while (digit <= 9) {
+                if (digit % 3 === 0 && digit !== 0) {
+                    logToPage(`   ${digit} <--`);
+                } else {
+                    logToPage(`   ${digit}`);
+                }
+                digit++;
+            }
+
+            /* Task 4: */
+
+            let flag = false;
+            let attempts = 0;
+
+
+            logToPage('\n4. Integer input test:');
+
+            /* while loop to test flag */
+            while (!flag) {
+                const rangeInput = prompt('Enter an integer between 0 and 99:');
+                const number = parseInt(rangeInput);
+
+                attempts++;
+
+                if (!isNaN(number) && number >= 0 && number <= 99) {
+                    flag = true;
+                    logToPage(`   Valid input received: ${number} (after ${attempts} attempt${attempts !== 1 ? 's' : ''})`);
+                } else {
+                    logToPage(`   Attempt ${attempts}: "${rangeInput}" is not in range 0-99, try again`);
+                }
+            }
+
+            document.getElementById('output').textContent = outLines.join('\n');
+        })();
+    </script>
+</body>
+
+</html>

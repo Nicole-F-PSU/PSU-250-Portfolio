@@ -1,0 +1,162 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #60a9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+a {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    color: #016ff9;
+}
+
+
+.main-header {
+    border-bottom: 1px solid #e1f1ff;
+}
+
+.section-header {
+    max-width: 30%;
+    border-bottom: 1px solid #e1f1ff;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-container {
+    background-color: white;
+    border: 2px solid #e1f1ff;
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 0 50px 0 20px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 960px;
+}
+
+#collection-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    row-gap: 0;
+    column-gap: 30px;
+    padding: 0 2rem;
+}
+
+.album-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 2rem 1rem;
+}
+
+.album-cover {
+    border: 1px solid black;
+    box-shadow: 8px 5px 5px black;
+    width: 160px;
+}
+
+.album-cover:hover {
+    width: 200px;
+    position: relative;
+    top: 10px;
+}
+
+#inventory-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+}
+
+.inventory-table {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.inventory-table thead tr {
+    background: linear-gradient(135deg, #ffffff 0%, #82cdff 100%);
+    color: #016ff9;
+    font-weight: bold;
+}
+
+.inventory-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.inventory-table td {
+    padding: 1rem 1.5rem;
+    color: #016ff9;
+}
+
+.inventory-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+#daughter {
+    width: 50px;
+    position: absolute;
+    top: -10px;
+    left: -8px;
+}
+
+.contact-info {
+    background-color: white;
+    border: 1px solid #e1f1ff;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+}
+
+.about-block {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.about-block img {
+    width: 200px;
+    float: inline-end;
+}
